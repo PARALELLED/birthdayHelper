@@ -36,6 +36,6 @@ def job():
     # 每天 00:00 執行 (24小時)
     schedule.every().day.at("22:30").do(check_birthday)
     #print("開始執行")
-    while True:
-        schedule.run_pending()
-        time.sleep(1)  # 每隔 60 秒檢查一次
+    # while True:
+    #     schedule.run_pending()
+    #     time.sleep(1)  # 每隔 60 秒檢查一次

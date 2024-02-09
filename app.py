@@ -13,6 +13,7 @@ from linebot.models import *
 from message import *
 from new import *
 from Function import *
+from main1 import *
 #======這裡是呼叫的檔案內容=====
 
 #======python的函數庫==========
@@ -49,31 +50,40 @@ def callback():
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
+    today = check_birthday()
+    job()
+    msg = event.message.text
+    if msg != "":
+        line_bot_api.reply_message(event.reply_token, today)
+    else:
+        line_bot_api.reply_message(event.reply_token, "錯誤")
+
+
 
     #line_bot_api.push_message('U2ca83997b14c3819109e9dc4e161f3be', TextSendMessage(text=str("測試")))
 
-    msg = event.message.text
-    if '最新合作廠商' in msg:
-        message = imagemap_message()
-        line_bot_api.reply_message(event.reply_token, message)
-    elif '最新活動訊息' in msg:
-        message = buttons_message()
-        line_bot_api.reply_message(event.reply_token, message)
-    elif '註冊會員' in msg:
-        message = Confirm_Template()
-        line_bot_api.reply_message(event.reply_token, message)
-    elif '旋轉木馬' in msg:
-        message = Carousel_Template()
-        line_bot_api.reply_message(event.reply_token, message)
-    elif '圖片畫廊' in msg:
-        message = test()
-        line_bot_api.reply_message(event.reply_token, message)
-    elif '功能列表' in msg:
-        message = function_list()
-        line_bot_api.reply_message(event.reply_token, message)
-    else:
-        message = TextSendMessage(text=msg)
-        line_bot_api.reply_message(event.reply_token, message)
+    
+    # if '最新合作廠商' in msg:
+    #     message = imagemap_message()
+    #     line_bot_api.reply_message(event.reply_token, message)
+    # elif '最新活動訊息' in msg:
+    #     message = buttons_message()
+    #     line_bot_api.reply_message(event.reply_token, message)
+    # elif '註冊會員' in msg:
+    #     message = Confirm_Template()
+    #     line_bot_api.reply_message(event.reply_token, message)
+    # elif '旋轉木馬' in msg:
+    #     message = Carousel_Template()
+    #     line_bot_api.reply_message(event.reply_token, message)
+    # elif '圖片畫廊' in msg:
+    #     message = test()
+    #     line_bot_api.reply_message(event.reply_token, message)
+    # elif '功能列表' in msg:
+    #     message = function_list()
+    #     line_bot_api.reply_message(event.reply_token, message)
+    # else:
+    #     message = TextSendMessage(text=msg)
+    #     line_bot_api.reply_message(event.reply_token, message)
 
 @handler.add(PostbackEvent)
 def handle_message(event):

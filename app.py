@@ -28,6 +28,7 @@ line_bot_api = LineBotApi(os.getenv('CHANNEL_ACCESS_TOKEN'))
 # Channel Secret
 handler = WebhookHandler(os.getenv('CHANNEL_SECRET'))
 
+#line_bot_api.push_message('U8110592b8b4aad83c93455b81cee013e', TextSendMessage(text='你可以開始了'))
 
 # 監聽所有來自 /callback 的 Post Request
 @app.route("/callback", methods=['POST'])
@@ -49,8 +50,8 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
 
-    line_bot_api.push_message('U2ca83997b14c3819109e9dc4e161f3be', TextSendMessage(text=str("測試")))
-    
+    #line_bot_api.push_message('U2ca83997b14c3819109e9dc4e161f3be', TextSendMessage(text=str("測試")))
+
     msg = event.message.text
     if '最新合作廠商' in msg:
         message = imagemap_message()

@@ -14,7 +14,9 @@ birthday = {
 }
 
 def check_birthday():
+    print("="*20)
     print("check_birthday start")
+    print("="*20)
     today = datetime.date.today().strftime("%Y-%m-%d")
     today = today[5:]
     for name, bday in birthday.items():
@@ -28,8 +30,11 @@ def check_birthday():
     return today
 
 def job():
+    print("="*20)
+    print("job start")
+    print("="*20)
     # 每天 00:00 執行 (24小時)
-    schedule.every().day.at("22:05").do(check_birthday)
+    schedule.every().day.at("22:20").do(check_birthday)
     #print("開始執行")
     while True:
         schedule.run_pending()

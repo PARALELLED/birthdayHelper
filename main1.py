@@ -1,7 +1,7 @@
 import datetime
 import schedule
 import time
-from plyer import notification
+#from plyer import notification
 
 # 定義生日日期
 birthday = {
